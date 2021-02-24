@@ -1,0 +1,19 @@
+@import "./scss/fonts";
+@import "./scss/variables";
+
+html,
+body {
+  height: 100%;
+  box-sizing: border-box;
+  background: $color_grey_ef;
+}
+
+body {
+  margin: 0;
+  font-family: "Pixeboy", sans-serif;
+  border: 2px solid $color_black;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}

@@ -1,0 +1,21 @@
+.LoginPage {
+  height: calc(100vh - 44px);
+  max-width: 362px;
+  width: 96%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .WojakImg {
+    margin-left: 14px;
+    width: 279px;
+    height: auto;
+  }
+
+  .LoginButton {
+    max-width: 310px;
+    width: 100%;
+    margin: 64px auto 0;
+  }
+}
