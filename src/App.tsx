@@ -10,7 +10,6 @@ const getLibrary = (provider: any): Web3Provider => {
 }
 
 const App = () => {
-  const a = "tada"
   return (
     <Web3ReactProvider getLibrary={getLibrary}>
       <Wallet />

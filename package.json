@@ -19,7 +19,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prettier": "prettier --ignore-path .gitignore \"**/*.+(js|jsx|json|scss|ts|tsx)\""
   },
   "eslintConfig": {
     "extends": [
@@ -50,7 +51,7 @@
     "@types/react-dom": "^17.0.0",
     "@types/react-router-dom": "^5.1.7",
     "eslint-config-prettier": "^8.1.0",
-    "husky": "^5.1.1",
+    "husky": "4.3.8",
     "lint-staged": "^10.5.4",
     "prettier": "^2.2.1",
     "typescript-plugin-css-modules": "^3.2.0"
@@ -62,12 +63,10 @@
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json}": [
-      "eslint --max-warnings 0",
-      "npm run test"
+      "eslint --max-warnings 0"
     ],
     "src/**/*.{js,jsx,ts,tsx,json,scss,md}": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   }
 }
