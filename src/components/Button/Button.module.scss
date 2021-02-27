@@ -1,14 +1,21 @@
 @import "../../scss/variables";
 
 .Button {
+  color: $color_black;
   background: $color_white;
   border: 2px solid $color_black;
   padding: 22px;
   font-family: "Pixeboy", sans-serif;
+  transition: $transition_default;
+
+  &:hover {
+    cursor: pointer;
+    color: $color_white;
+    background: $color_black;
+  }
 
   .ButtonContent {
     text-transform: uppercase;
-    color: $color_black;
     font-size: 24px;
     line-height: 26px;
   }

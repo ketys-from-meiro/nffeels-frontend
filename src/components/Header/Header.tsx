@@ -1,3 +1,5 @@
+import { Web3Provider } from "@ethersproject/providers"
+import { useWeb3React } from "@web3-react/core"
 import React from "react"
 
 import styles from "./Header.module.scss"
@@ -12,7 +14,10 @@ const Lines = () => {
   )
 }
 
-export default function Header() {
+const Header = () => {
+  const { account } = useWeb3React<Web3Provider>()
+  console.log(account)
+
   return (
     <section className={styles.Header}>
       <Lines />
@@ -23,3 +28,5 @@ export default function Header() {
     </section>
   )
 }
+
+export default Header

@@ -6,10 +6,12 @@ type ButtonProps = {
   children: ReactNode
 } & Omit<ComponentProps<"button">, "size">
 
-export default function Button({ children, className, ...props }: ButtonProps) {
+const Button = ({ children, className, ...props }: ButtonProps) => {
   return (
     <button className={classnames(styles.Button, className)} {...props}>
       {children && <div className={styles.ButtonContent}>{children}</div>}
     </button>
   )
 }
+
+export default Button
