@@ -8,6 +8,7 @@ import { Web3Provider } from "@ethersproject/providers"
 import { injectedConnector } from "services/wallet"
 import { useHistory, useLocation } from "react-router-dom"
 import { getRoutePath } from "services/routes"
+import { SESSION_STORAGE } from "consts"
 
 const Login = () => {
   const { activate, active } = useWeb3React<Web3Provider>()
@@ -15,9 +16,10 @@ const Login = () => {
   const location = useLocation<{ from: Location } | undefined>()
   const redirectTo = location.state?.from
 
-  const onLoginClick = () => {
+  const onLoginClick = async () => {
     // TODO: loading, error handling
-    activate(injectedConnector)
+    await activate(injectedConnector)
+    sessionStorage.setItem(SESSION_STORAGE.AUTO_LOGIN, "true")
   }
 
   useEffect(() => {
