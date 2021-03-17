@@ -1,6 +1,6 @@
 @import "../../scss/variables";
 
-.Header {
+.header {
   box-sizing: border-box;
   height: 44px;
   width: 100%;
@@ -9,12 +9,12 @@
   align-items: center;
   background: $color_white;
 
-  .Lines {
+  .lines {
     height: 20px;
     margin: 0 16px;
     flex-grow: 1;
 
-    .Line {
+    .line {
       width: 100%;
       height: 1px;
       background: $color_black;
@@ -26,7 +26,7 @@
     }
   }
 
-  .Brand {
+  .brand {
     width: 50%;
     max-width: 330px;
     margin: 0 auto;

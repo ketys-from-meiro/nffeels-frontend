@@ -1,3 +1,8 @@
-export const SESSION_STORAGE = {
-  AUTO_LOGIN: "walletAutoLogin",
+export const WALLET = {
+  STATUS: {
+    CONNECTED: "connected",
+    CONNECTING: "connecting",
+    DISCONNECTED: "disconnected",
+    ERROR: "error",
+  },
 }

@@ -8,8 +8,8 @@ type ButtonProps = {
 
 const Button = ({ children, className, ...props }: ButtonProps) => {
   return (
-    <button className={classnames(styles.Button, className)} {...props}>
-      {children && <div className={styles.ButtonContent}>{children}</div>}
+    <button className={classnames(styles.button, className)} {...props}>
+      {children && <div className={styles.buttonContent}>{children}</div>}
     </button>
   )
 }

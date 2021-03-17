@@ -1,4 +1,4 @@
-.LoginPage {
+.homePage {
   height: calc(100vh - 44px);
   max-width: 362px;
   width: 96%;
@@ -7,13 +7,13 @@
   flex-direction: column;
   justify-content: center;
 
-  .WojakImg {
+  .wojakImg {
     margin-left: 14px;
     width: 279px;
     height: auto;
   }
 
-  .LoginButton {
+  .loginButton {
     max-width: 310px;
     width: 100%;
     margin: 64px auto 0;

@@ -1,6 +1,6 @@
 export const routes = {
-  dashboard: "/",
-  login: "/login",
+  home: "/",
+  gallery: "/gallery",
 }
 
 interface Params {
