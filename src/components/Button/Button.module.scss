@@ -1,8 +1,6 @@
 @import "../../scss/variables";
 
 .button {
-  color: $color_black;
-  background: $color_white;
   border: 2px solid $color_black;
   padding: 22px;
   font-family: "Pixeboy", sans-serif;
@@ -10,13 +8,35 @@
 
   &:hover {
     cursor: pointer;
-    color: $color_white;
-    background: $color_black;
+  }
+
+  &:focus {
+    outline: none;
   }
 
   .buttonContent {
     text-transform: uppercase;
     font-size: 24px;
     line-height: 26px;
+  }
+
+  &.primaryColor {
+    color: $color_black;
+    background: $color_white;
+
+    &:hover {
+      color: $color_white;
+      background: $color_black;
+    }
+  }
+
+  &.secondaryColor {
+    color: $color_white;
+    background: $color_black;
+
+    &:hover {
+      color: $color_black;
+      background: $color_white;
+    }
   }
 }

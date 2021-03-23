@@ -1,21 +1,15 @@
-import React, { useEffect, useState } from "react"
+import React, { useContext } from "react"
 
 import styles from "./Home.module.scss"
 import wojakImgSrc from "../../images/wojak-landing.png"
 import Button from "components/Button/Button"
-import { useHistory, useLocation } from "react-router-dom"
-import { getRoutePath } from "services/routes"
-import { useWallet } from "use-wallet"
-import { WALLET } from "consts"
+import LoginModalContext from "App/components/LoginModal/context"
 
 const Home = () => {
-  const [redirectAfterLogin, setRedirectAfterLogin] = useState(false)
-  const wallet = useWallet()
-  const history = useHistory()
-  const location = useLocation<{ from: Location } | undefined>()
-  const redirectTo = location.state?.from
+  const { dispatch: loginModalToggle } = useContext(LoginModalContext)
 
   // TODO: loading, error handling
+  /*
   const onLoginClick = (type: "injected" | "walletconnect") => () => {
     setRedirectAfterLogin(true)
     wallet.connect(type)
@@ -24,39 +18,18 @@ const Home = () => {
   const onLogoutClick = () => {
     wallet.reset()
   }
-
-  useEffect(() => {
-    if (wallet.status === WALLET.STATUS.CONNECTED && redirectAfterLogin) {
-      history.push(redirectTo ?? getRoutePath("gallery"))
-    }
-  }, [wallet, history, redirectTo, redirectAfterLogin])
-
-  const renderButtons = () => {
-    console.log(wallet.status)
-    if (wallet.status !== WALLET.STATUS.CONNECTED) {
-      return (
-        <>
-          <Button className={styles.loginButton} onClick={onLoginClick("injected")}>
-            Connect wallet MM
-          </Button>
-          <Button className={styles.loginButton} onClick={onLoginClick("walletconnect")}>
-            Connect WC
-          </Button>
-        </>
-      )
-    } else {
-      return (
-        <Button className={styles.loginButton} onClick={onLogoutClick}>
-          Logout
-        </Button>
-      )
-    }
-  }
+  */
 
   return (
     <section className={styles.homePage}>
       <img src={wojakImgSrc} alt="Wojak" className={styles.wojakImg} />
-      {renderButtons()}
+      <Button
+        className={styles.lotteryButton}
+        onClick={() => loginModalToggle({ type: "toggle" })}
+        color="secondary"
+      >
+        Enter lottery
+      </Button>
     </section>
   )
 }

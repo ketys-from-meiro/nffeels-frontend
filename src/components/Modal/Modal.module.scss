@@ -1,0 +1,41 @@
+@import "../../scss/variables";
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1001;
+  padding: 15px;
+  border: 1px solid $color_grey_ef;
+  background: $color_grey_ef;
+  border-radius: $color_grey_ef;
+
+  &.small {
+    width: 320px;
+  }
+
+  &.medium {
+    width: 90%;
+    max-width: 480px;
+  }
+
+  &.large {
+    width: 90%;
+    max-width: 640px;
+  }
+
+  .modalTitle {
+    margin-bottom: 20px;
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  background: rgba($color_black, 0.5);
+}
