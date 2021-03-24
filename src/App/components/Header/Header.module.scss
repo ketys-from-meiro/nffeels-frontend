@@ -1,4 +1,4 @@
-@import "../../scss/variables";
+@import "../../../scss/variables";
 
 .header {
   box-sizing: border-box;
@@ -9,6 +9,30 @@
   align-items: center;
   background: $color_white;
   position: relative;
+
+  .navigation {
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+
+    a {
+      color: $color_black;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      margin: 0 15px;
+      font-size: 24px;
+      line-height: 24px;
+    }
+
+    .wojak {
+      width: auto;
+      height: 16px;
+      margin-right: 8px;
+      margin-top: -2px;
+    }
+  }
 
   .lines {
     height: 20px;
@@ -39,7 +63,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
+    z-index: 1;
 
     h1 {
       margin: 0;

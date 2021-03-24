@@ -1,6 +1,8 @@
 export const routes = {
   home: "/",
   gallery: "/gallery",
+  council: "/council",
+  proposals: "/proposals",
 }
 
 interface Params {
