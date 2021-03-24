@@ -6,28 +6,12 @@ import Button from "components/Button/Button"
 import LoginModalContext from "App/components/LoginModal/context"
 
 const Home = () => {
-  const { dispatch: loginModalToggle } = useContext(LoginModalContext)
-
-  // TODO: loading, error handling
-  /*
-  const onLoginClick = (type: "injected" | "walletconnect") => () => {
-    setRedirectAfterLogin(true)
-    wallet.connect(type)
-  }
-
-  const onLogoutClick = () => {
-    wallet.reset()
-  }
-  */
+  const { toggle } = useContext(LoginModalContext)
 
   return (
     <section className={styles.homePage}>
       <img src={wojakImgSrc} alt="Wojak" className={styles.wojakImg} />
-      <Button
-        className={styles.lotteryButton}
-        onClick={() => loginModalToggle({ type: "toggle" })}
-        color="secondary"
-      >
+      <Button className={styles.lotteryButton} onClick={toggle} color="secondary" size="lg">
         Enter lottery
       </Button>
     </section>

@@ -1,14 +1,14 @@
 import React from "react"
-import { Action, State } from "./reducer"
+import { State } from "./reducer"
 
 type ContextType = {
   state: State
-  dispatch: (a: Action) => void
+  toggle: () => void
 }
 
 const LoginModalContext = React.createContext<ContextType>({
   state: { open: false },
-  dispatch: () => {},
+  toggle: () => {},
 })
 
 export default LoginModalContext

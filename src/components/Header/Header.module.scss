@@ -8,6 +8,7 @@
   display: flex;
   align-items: center;
   background: $color_white;
+  position: relative;
 
   .lines {
     height: 20px;
@@ -27,9 +28,13 @@
   }
 
   .brand {
+    background: $color_white;
     width: 50%;
     max-width: 330px;
-    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
     height: 100%;
     display: flex;
     align-items: center;
@@ -39,6 +44,19 @@
     h1 {
       margin: 0;
       font-size: 24px;
+    }
+  }
+
+  .walletBlock {
+    margin-right: 15px;
+
+    .walletAddress {
+      display: inline-block;
+      border: 2px solid $color_black;
+      padding: 3px 8px 1px;
+      font-size: 16px;
+      line-height: 16px;
+      margin-right: 4px;
     }
   }
 }

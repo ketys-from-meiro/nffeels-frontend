@@ -1,4 +1,4 @@
-import React, { useReducer } from "react"
+import React, { useReducer, useCallback } from "react"
 import Header from "components/Header/Header"
 import { BrowserRouter, Switch, Route } from "react-router-dom"
 import { getRoutePath } from "services/routes"
@@ -11,7 +11,8 @@ import LoginModal from "./components/LoginModal/LoginModal"
 
 const App = () => {
   const [state, dispatch] = useReducer(loginModalReducer, { open: false })
-  console.log("render App!")
+  const toggle = useCallback(() => dispatch({ type: "toggle" }), [])
+
   return (
     <UseWalletProvider
       chainId={1}
@@ -21,20 +22,14 @@ const App = () => {
       }}
     >
       <BrowserRouter>
-        <LoginModalContext.Provider value={{ state, dispatch }}>
+        <LoginModalContext.Provider value={{ state, toggle }}>
           <Header />
           <Switch>
             <Route path={getRoutePath("gallery")} component={Gallery} />
             <Route path={getRoutePath("home")} component={Home} exact />
           </Switch>
         </LoginModalContext.Provider>
-        {state.open && (
-          <LoginModal
-            toggle={() => {
-              dispatch({ type: "toggle" })
-            }}
-          />
-        )}
+        {state.open && <LoginModal toggle={toggle} />}
       </BrowserRouter>
     </UseWalletProvider>
   )

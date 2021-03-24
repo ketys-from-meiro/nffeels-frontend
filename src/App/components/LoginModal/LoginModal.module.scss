@@ -1,0 +1,36 @@
+@import "../../../scss/variables";
+
+.loginModal {
+  padding: 0;
+
+  button {
+    padding: 10%;
+    width: 50%;
+    font-family: "Pixeboy", sans-serif;
+    font-size: 24px;
+    color: $color_black;
+    border: 0;
+    background: transparent;
+    transition: $transition_default;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      background: $color_grey_e3;
+    }
+
+    span {
+      display: block;
+      margin-top: 8px;
+    }
+
+    img {
+      width: 60%;
+      max-width: 104px;
+      height: auto;
+    }
+  }
+}
