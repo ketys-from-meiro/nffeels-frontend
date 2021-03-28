@@ -1,21 +1,17 @@
-import React, { useReducer, useCallback } from "react"
+import React from "react"
 import Header from "./components/Header/Header"
 import { BrowserRouter, Switch, Route } from "react-router-dom"
 import { getRoutePath } from "services/routes"
 import Home from "pages/Home/Home"
 import Gallery from "pages/Gallery/Gallery"
 import { UseWalletProvider } from "use-wallet"
-import loginModalReducer from "./components/LoginModal/reducer"
-import LoginModalContext from "./components/LoginModal/context"
-import LoginModal from "./components/LoginModal/LoginModal"
+import { Web3Provider } from "../contexts/useWeb3"
+
 import Council from "pages/Council/Council"
 import Proposals from "pages/Proposals/Proposals"
 import Layout from "./components/Layout/Layout"
 
 const App = () => {
-  const [state, dispatch] = useReducer(loginModalReducer, { open: false })
-  const toggle = useCallback(() => dispatch({ type: "toggle" }), [])
-
   return (
     <UseWalletProvider
       chainId={1}
@@ -25,7 +21,7 @@ const App = () => {
       }}
     >
       <BrowserRouter>
-        <LoginModalContext.Provider value={{ state, toggle }}>
+        <Web3Provider>
           <Header />
           <Layout>
             <Switch>
@@ -35,8 +31,7 @@ const App = () => {
               <Route path={getRoutePath("home")} component={Home} exact />
             </Switch>
           </Layout>
-        </LoginModalContext.Provider>
-        {state.open && <LoginModal toggle={toggle} />}
+        </Web3Provider>
       </BrowserRouter>
     </UseWalletProvider>
   )

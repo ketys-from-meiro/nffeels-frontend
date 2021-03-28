@@ -1,13 +1,12 @@
 import Button from "components/Button/Button"
-import { WALLET } from "consts"
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 import { useWallet } from "use-wallet"
-import { take, takeLast } from "ramda"
+import { useWeb3 } from "../../../contexts/useWeb3"
 import styles from "./Header.module.scss"
-import LoginModalContext from "App/components/LoginModal/context"
 import { NavLink } from "react-router-dom"
 import { getRoutePath } from "services/routes"
 import wojakImg from "images/wojak-landing.png"
+import LoginModal from "../../components/LoginModal/LoginModal"
 
 const Lines = () => {
   return (
@@ -20,15 +19,16 @@ const Lines = () => {
 }
 
 const Header = () => {
-  const { status, account, reset } = useWallet()
-  const { toggle } = useContext(LoginModalContext)
+  const { status, account, disconnectWallet } = useWeb3()
+  const [state, setState] = useState(false)
 
-  const onLogoutClick = () => {
-    reset()
+  const toggle = () => {
+    console.log("Toggle")
+    setState(!state)
   }
 
   const shortenAddress = (address: string): string => {
-    return `${take(4, address)}...${takeLast(4, address)}`
+    return `${address.slice(0, 4)}...${address.slice(-4, -1)}`
   }
 
   return (
@@ -47,20 +47,20 @@ const Header = () => {
         <h1>NFFEELS</h1>
       </div>
       <div className={styles.walletBlock}>
-        {status === WALLET.STATUS.CONNECTED && (
+        {account ? (
           <>
             <span className={styles.walletAddress}>{shortenAddress(account!)}</span>
-            <Button color="primary" size="sm" onClick={onLogoutClick}>
+            <Button color="primary" size="sm" onClick={() => disconnectWallet()}>
               Logout
             </Button>
           </>
-        )}
-        {status !== WALLET.STATUS.CONNECTED && (
+        ) : (
           <Button color="primary" size="sm" onClick={toggle}>
             Connect wallet
           </Button>
         )}
       </div>
+      {state && !account ? <LoginModal toggle={toggle} /> : null}
     </section>
   )
 }
