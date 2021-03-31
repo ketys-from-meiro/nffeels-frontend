@@ -51,11 +51,13 @@ const Gallery = () => {
                     <div className={styles.imageTitleContainer}>
                       <h3 className={styles.imageTitle}>#{index}</h3>
                     </div>
-                    {isButtonShown.key === index && isButtonShown.state && (
-                      <button type="button" className={styles.viewButton}>
-                        View on Opensea
-                      </button>
-                    )}
+                    <div className={styles.viewButtonContainer}>
+                      {isButtonShown.key === index && isButtonShown.state && (
+                        <button type="button" className={styles.viewButton}>
+                          View on Opensea
+                        </button>
+                      )}
+                    </div>
                   </div>
                 </div>
               </li>
