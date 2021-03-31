@@ -4,19 +4,14 @@ import styles from "./LoginModal.module.scss"
 
 import metamask from "./icons/metamask.png"
 import walletconnect from "./icons/walletconnect.png"
-import { useWallet } from "use-wallet"
-import { WALLET } from "consts"
-
+import { useWeb3 } from "../../../contexts/useWeb3"
+import { WALLET } from "../../../consts"
 type LoginModalProps = {
   toggle: () => void
 }
 
 const LoginModal = ({ toggle }: LoginModalProps) => {
-  const { connect, status } = useWallet()
-
-  const onConnectClick = (type: "injected" | "walletconnect") => async () => {
-    connect(type)
-  }
+  const { status, connectWallet } = useWeb3()
 
   useEffect(() => {
     if (status === WALLET.STATUS.CONNECTED) {
@@ -26,11 +21,11 @@ const LoginModal = ({ toggle }: LoginModalProps) => {
 
   return (
     <Modal onClose={toggle} size="large" className={styles.loginModal}>
-      <button onClick={onConnectClick("injected")}>
+      <button onClick={() => connectWallet("injected")}>
         <img src={metamask} alt="" />
         <span>Metamask</span>
       </button>
-      <button onClick={onConnectClick("walletconnect")}>
+      <button onClick={() => connectWallet("walletconnect")}>
         <img src={walletconnect} alt="" />
         <span>Walletconnect</span>
       </button>
