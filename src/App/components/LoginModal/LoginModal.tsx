@@ -5,13 +5,19 @@ import styles from "./LoginModal.module.scss"
 import metamask from "./icons/metamask.png"
 import walletconnect from "./icons/walletconnect.png"
 import { useWeb3 } from "../../../contexts/useWeb3"
-
+import { WALLET } from "../../../consts"
 type LoginModalProps = {
   toggle: () => void
 }
 
 const LoginModal = ({ toggle }: LoginModalProps) => {
-  const { connectWallet } = useWeb3()
+  const { status, connectWallet } = useWeb3()
+
+  useEffect(() => {
+    if (status === WALLET.STATUS.CONNECTED) {
+      toggle()
+    }
+  }, [status, toggle])
 
   return (
     <Modal onClose={toggle} size="large" className={styles.loginModal}>

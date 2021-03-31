@@ -7,6 +7,7 @@ import { NavLink } from "react-router-dom"
 import { getRoutePath } from "services/routes"
 import wojakImg from "images/wojak-landing.png"
 import LoginModal from "../../components/LoginModal/LoginModal"
+import LoginModalContext from "../LoginModal/context"
 
 const Lines = () => {
   return (
@@ -20,12 +21,7 @@ const Lines = () => {
 
 const Header = () => {
   const { status, account, disconnectWallet } = useWeb3()
-  const [state, setState] = useState(false)
-
-  const toggle = () => {
-    console.log("Toggle")
-    setState(!state)
-  }
+  const { toggle } = useContext(LoginModalContext)
 
   const shortenAddress = (address: string): string => {
     return `${address.slice(0, 4)}...${address.slice(-4, -1)}`
@@ -60,7 +56,6 @@ const Header = () => {
           </Button>
         )}
       </div>
-      {state && !account ? <LoginModal toggle={toggle} /> : null}
     </section>
   )
 }
