@@ -1,22 +1,5 @@
 @import "../../scss/variables";
 
-.dropdownContentItem {
-  display: block;
-  font-size: 20px;
-  line-height: 1.25rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 0.5rem;
-  padding-right: 1rem;
-  color: rgba(55, 65, 81, 1);
-  text-transform: uppercase;
-
-  &:hover {
-    background-color: rgba(243, 244, 246, 1);
-    color: rgba(17, 24, 39, 1);
-  }
-}
-
 .imageStyles {
   height: 15rem;
   margin-left: auto;
@@ -29,16 +12,38 @@
   }
 }
 
+.dropdownButton {
+  background-color: $color_white;
+  border-collapse: collapse;
+  border-color: $color_black;
+  display: inline-flex;
+  justify-content: center;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 1.25rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.25rem;
+  color: $color_black;
+  text-transform: uppercase;
+  width: 169px;
+  border-width: 2px;
+
+  &:not(.countLabel):hover &:hover {
+    background-color: $color_grey_f9;
+  }
+}
+
 .galleryListItem {
-  background-color: rgba(255, 255, 255, 1);
-  border-color: rgba(0, 0, 0, 1);
+  background-color: $color_white;
+  border-color: $color_black;
   border-width: 2px;
   padding-top: 0.5rem;
   text-align: center;
 }
 
 .imageTitle {
-  color: rgba(0, 0, 0, 1);
+  color: $color_black;
 }
 
 .galleryListItemContainer {
@@ -75,77 +80,22 @@
   transform: translateX(0) translateY(0) rotate(0) skewX(0) skewY(0) scaleX(1) scaleY(1);
 }
 
-.dropdownContentContainer {
-  background-color: rgba(255, 255, 255, 1);
-  border-color: rgba(0, 0, 0, 1);
-  border-right-width: 2px;
-  border-bottom-width: 2px;
-  border-left-width: 2px;
-  position: absolute;
-  left: 0rem;
-  width: 169px;
-  z-index: 10;
-  transform-origin: top;
-}
-
-.dropdownOpen {
-  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow,
-    transform;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-  opacity: 1;
-}
-
-.dropdownClose {
-  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow,
-    transform;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-  opacity: 0;
-}
-
-.transform {
-  transform: translateX(0) translateY(0) rotate(0) skewX(0) skewY(0) scaleX(1) scaleY(1);
-}
-
-.dropdownButton {
-  background-color: rgba(255, 255, 255, 1);
-  border-collapse: collapse;
-  border-color: rgba(0, 0, 0, 1);
-  display: inline-flex;
-  justify-content: center;
-  font-weight: normal;
-  font-size: 20px;
-  line-height: 1.25rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 0.25rem;
-  color: rgba(55, 65, 81, 1);
-  text-transform: uppercase;
-  width: 169px;
-  border-width: 2px;
-
-  &:not(.countLabel):hover &:hover {
-    background-color: rgba(249, 250, 251, 1);
-  }
-}
-
 .countLabel {
   width: 143px;
 }
 
 .linesContainer {
-  border-color: rgba(0, 0, 0, 1);
+  border-color: $color_black;
   border-bottom-width: 2px;
   padding-bottom: 0.5rem;
 }
 
 .pageTitle {
-  font-weight: 800;
-  font-size: 1.875rem;
+  font-weight: normal;
+  font-size: 32px;
   line-height: 2.25rem;
   text-align: center;
-  color: rgba(0, 0, 0, 1);
+  color: $color_black;
   text-transform: uppercase;
   letter-spacing: -0.025em;
 
@@ -155,18 +105,13 @@
   }
 }
 
-.dropdownContent {
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-}
-
 .galleryContainer {
   margin-top: 3rem;
   margin-bottom: 0rem;
 }
 
 .viewButton {
-  border-color: rgba(0, 0, 0, 1);
+  border-color: $color_black;
   border-top-width: 2px;
   font-size: 1rem;
   line-height: 1.5rem;
@@ -174,37 +119,7 @@
   height: 48px;
 
   &:hover {
-    background-color: rgb(227, 227, 227);
-  }
-}
-
-.filterDropdownContainer {
-  display: inline-block;
-  padding-right: 0.5rem;
-  padding-bottom: 0.5rem;
-  position: relative;
-  text-align: left;
-}
-
-.pageContainer {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 80rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-
-  @media (min-width: 640px) {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-
-  @media (min-width: 1024px) {
-    padding-left: 2rem;
-    padding-right: 2rem;
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    background-color: $color_grey_e3;
   }
 }
 
@@ -244,21 +159,4 @@
 .headerContainer {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.lines {
-  height: 20px;
-  margin: 0 16px;
-  flex-grow: 1;
-
-  .line {
-    width: 100%;
-    height: 1px;
-    background: $color_black;
-    margin-bottom: 3px;
-
-    &.last-child {
-      margin-bottom: 0;
-    }
-  }
 }
