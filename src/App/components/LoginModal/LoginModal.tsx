@@ -15,7 +15,6 @@ type LoginModalProps = {
 const walletconnectConnector = new WalletConnectConnector({ rpc: { 1: "..." } })
 
 const LoginModal = ({ toggle }: LoginModalProps) => {
-  // const { error } = useEthers()
   const { activate, activateBrowserWallet, account } = useEthers()
 
   const onConnectClick = (type: "injected" | "walletconnect") => async () => {
@@ -25,7 +24,7 @@ const LoginModal = ({ toggle }: LoginModalProps) => {
         activateBrowserWallet()
         break
       case "walletconnect":
-        activate(walletconnectConnector)
+        activate(walletconnectConnector, (error: Error) => console.log(error))
         break
     }
   }

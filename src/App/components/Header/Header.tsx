@@ -1,8 +1,8 @@
 import Button from "components/Button/Button"
 // import { WALLET } from "consts"
 import React, { useContext } from "react"
-import { useEthers } from "@usedapp/core"
-import { take, takeLast } from "ramda"
+import { useEthers, shortenIfAddress } from "@usedapp/core"
+// import { take, takeLast } from "ramda"
 import styles from "./Header.module.scss"
 import LoginModalContext from "App/components/LoginModal/context"
 import { NavLink } from "react-router-dom"
@@ -27,10 +27,6 @@ const Header = () => {
     deactivate()
   }
 
-  const shortenAddress = (address: string): string => {
-    return `${take(4, address)}...${takeLast(4, address)}`
-  }
-
   return (
     <section className={styles.header}>
       <nav className={styles.navigation}>
@@ -49,7 +45,7 @@ const Header = () => {
       <div className={styles.walletBlock}>
         {account && (
           <>
-            <span className={styles.walletAddress}>{shortenAddress(account!)}</span>
+            <span className={styles.walletAddress}>{shortenIfAddress(account!)}</span>
             <Button color="primary" size="sm" onClick={onLogoutClick}>
               Logout
             </Button>
