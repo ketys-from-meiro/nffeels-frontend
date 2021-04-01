@@ -12,13 +12,14 @@ type LoginModalProps = {
   toggle: () => void
 }
 
-const walletconnectConnector = new WalletConnectConnector({ rpc: { 1: "..." } })
-
 const LoginModal = ({ toggle }: LoginModalProps) => {
   const { activate, activateBrowserWallet, account } = useEthers()
 
   const onConnectClick = (type: "injected" | "walletconnect") => async () => {
-    // connect(type)
+    const walletconnectConnector = new WalletConnectConnector({
+      rpc: { 1: "https://mainnet.eth.aragon.network/" },
+    })
+
     switch (type) {
       case "injected":
         activateBrowserWallet()
