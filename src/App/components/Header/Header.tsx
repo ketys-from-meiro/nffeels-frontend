@@ -1,7 +1,7 @@
 import Button from "components/Button/Button"
-import { WALLET } from "consts"
+// import { WALLET } from "consts"
 import React, { useContext } from "react"
-import { useWallet } from "use-wallet"
+import { useEthers } from "@usedapp/core"
 import { take, takeLast } from "ramda"
 import styles from "./Header.module.scss"
 import LoginModalContext from "App/components/LoginModal/context"
@@ -20,11 +20,11 @@ const Lines = () => {
 }
 
 const Header = () => {
-  const { status, account, reset } = useWallet()
+  const { deactivate, account } = useEthers()
   const { toggle } = useContext(LoginModalContext)
 
   const onLogoutClick = () => {
-    reset()
+    deactivate()
   }
 
   const shortenAddress = (address: string): string => {
@@ -47,7 +47,7 @@ const Header = () => {
         <h1>NFFEELS</h1>
       </div>
       <div className={styles.walletBlock}>
-        {status === WALLET.STATUS.CONNECTED && (
+        {account && (
           <>
             <span className={styles.walletAddress}>{shortenAddress(account!)}</span>
             <Button color="primary" size="sm" onClick={onLogoutClick}>
@@ -55,7 +55,7 @@ const Header = () => {
             </Button>
           </>
         )}
-        {status !== WALLET.STATUS.CONNECTED && (
+        {!account && (
           <Button color="primary" size="sm" onClick={toggle}>
             Connect wallet
           </Button>
