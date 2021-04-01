@@ -6,7 +6,6 @@ import metamask from "./icons/metamask.png"
 import walletconnect from "./icons/walletconnect.png"
 import { useEthers } from "@usedapp/core"
 import { WalletConnectConnector } from "@web3-react/walletconnect-connector"
-// import { WALLET } from "consts"
 
 type LoginModalProps = {
   toggle: () => void

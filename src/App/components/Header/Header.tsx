@@ -1,8 +1,6 @@
 import Button from "components/Button/Button"
-// import { WALLET } from "consts"
 import React, { useContext } from "react"
 import { useEthers, shortenIfAddress } from "@usedapp/core"
-// import { take, takeLast } from "ramda"
 import styles from "./Header.module.scss"
 import LoginModalContext from "App/components/LoginModal/context"
 import { NavLink } from "react-router-dom"
