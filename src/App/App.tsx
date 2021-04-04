@@ -9,7 +9,6 @@ import loginModalReducer from "./components/LoginModal/reducer"
 import LoginModalContext from "./components/LoginModal/context"
 import LoginModal from "./components/LoginModal/LoginModal"
 import Council from "pages/Council/Council"
-import Proposals from "pages/Proposals/Proposals"
 import Layout from "./components/Layout/Layout"
 
 const config = {
@@ -32,7 +31,6 @@ const App = () => {
             <Switch>
               <Route path={getRoutePath("gallery")} component={Gallery} />
               <Route path={getRoutePath("council")} component={Council} />
-              <Route path={getRoutePath("proposals")} component={Proposals} />
               <Route path={getRoutePath("home")} component={Home} exact />
             </Switch>
           </Layout>

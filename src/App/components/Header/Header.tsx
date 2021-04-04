@@ -34,7 +34,6 @@ const Header = () => {
         </NavLink>
         <NavLink to={getRoutePath("gallery")}>Gallery</NavLink>
         <NavLink to={getRoutePath("council")}>Council</NavLink>
-        <NavLink to={getRoutePath("proposals")}>Proposals</NavLink>
       </nav>
       <Lines />
       <div className={styles.brand}>
