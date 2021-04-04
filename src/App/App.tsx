@@ -4,7 +4,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom"
 import { getRoutePath } from "services/routes"
 import Home from "pages/Home/Home"
 import Gallery from "pages/Gallery/Gallery"
-import { UseWalletProvider } from "use-wallet"
+import { ChainId, DAppProvider } from "@usedapp/core"
 import loginModalReducer from "./components/LoginModal/reducer"
 import LoginModalContext from "./components/LoginModal/context"
 import LoginModal from "./components/LoginModal/LoginModal"
@@ -12,18 +12,19 @@ import Council from "pages/Council/Council"
 import Proposals from "pages/Proposals/Proposals"
 import Layout from "./components/Layout/Layout"
 
+const config = {
+  readOnlyChainId: ChainId.Mainnet,
+  readOnlyUrls: {
+    [ChainId.Mainnet]: "https://mainnet.eth.aragon.network/",
+  },
+}
+
 const App = () => {
   const [state, dispatch] = useReducer(loginModalReducer, { open: false })
   const toggle = useCallback(() => dispatch({ type: "toggle" }), [])
 
   return (
-    <UseWalletProvider
-      chainId={1}
-      connectors={{
-        injected: {},
-        walletconnect: { rpcUrl: "https://mainnet.eth.aragon.network/" },
-      }}
-    >
+    <DAppProvider config={config}>
       <BrowserRouter>
         <LoginModalContext.Provider value={{ state, toggle }}>
           <Header />
@@ -38,7 +39,7 @@ const App = () => {
         </LoginModalContext.Provider>
         {state.open && <LoginModal toggle={toggle} />}
       </BrowserRouter>
-    </UseWalletProvider>
+    </DAppProvider>
   )
 }
 

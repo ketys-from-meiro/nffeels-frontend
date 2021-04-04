@@ -4,25 +4,36 @@ import styles from "./LoginModal.module.scss"
 
 import metamask from "./icons/metamask.png"
 import walletconnect from "./icons/walletconnect.png"
-import { useWallet } from "use-wallet"
-import { WALLET } from "consts"
+import { useEthers } from "@usedapp/core"
+import { WalletConnectConnector } from "@web3-react/walletconnect-connector"
 
 type LoginModalProps = {
   toggle: () => void
 }
 
 const LoginModal = ({ toggle }: LoginModalProps) => {
-  const { connect, status } = useWallet()
+  const { activate, activateBrowserWallet, account } = useEthers()
 
   const onConnectClick = (type: "injected" | "walletconnect") => async () => {
-    connect(type)
+    const walletconnectConnector = new WalletConnectConnector({
+      rpc: { 1: "https://mainnet.eth.aragon.network/" },
+    })
+
+    switch (type) {
+      case "injected":
+        activateBrowserWallet()
+        break
+      case "walletconnect":
+        activate(walletconnectConnector, (error: Error) => console.log(error))
+        break
+    }
   }
 
   useEffect(() => {
-    if (status === WALLET.STATUS.CONNECTED) {
+    if (account) {
       toggle()
     }
-  }, [status, toggle])
+  }, [account, toggle])
 
   return (
     <Modal onClose={toggle} size="large" className={styles.loginModal}>

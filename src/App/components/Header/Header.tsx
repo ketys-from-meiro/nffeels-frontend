@@ -1,8 +1,6 @@
 import Button from "components/Button/Button"
-import { WALLET } from "consts"
 import React, { useContext } from "react"
-import { useWallet } from "use-wallet"
-import { take, takeLast } from "ramda"
+import { useEthers, shortenIfAddress } from "@usedapp/core"
 import styles from "./Header.module.scss"
 import LoginModalContext from "App/components/LoginModal/context"
 import { NavLink } from "react-router-dom"
@@ -20,15 +18,11 @@ const Lines = () => {
 }
 
 const Header = () => {
-  const { status, account, reset } = useWallet()
+  const { deactivate, account } = useEthers()
   const { toggle } = useContext(LoginModalContext)
 
   const onLogoutClick = () => {
-    reset()
-  }
-
-  const shortenAddress = (address: string): string => {
-    return `${take(4, address)}...${takeLast(4, address)}`
+    deactivate()
   }
 
   return (
@@ -47,15 +41,15 @@ const Header = () => {
         <h1>NFFEELS</h1>
       </div>
       <div className={styles.walletBlock}>
-        {status === WALLET.STATUS.CONNECTED && (
+        {account && (
           <>
-            <span className={styles.walletAddress}>{shortenAddress(account!)}</span>
+            <span className={styles.walletAddress}>{shortenIfAddress(account!)}</span>
             <Button color="primary" size="sm" onClick={onLogoutClick}>
               Logout
             </Button>
           </>
         )}
-        {status !== WALLET.STATUS.CONNECTED && (
+        {!account && (
           <Button color="primary" size="sm" onClick={toggle}>
             Connect wallet
           </Button>
