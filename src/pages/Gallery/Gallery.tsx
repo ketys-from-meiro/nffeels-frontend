@@ -3,13 +3,21 @@ import React, { useState } from "react"
 import styles from "./Gallery.module.scss"
 import Lines from "components/Lines/Lines"
 import Dropdown from "components/Dropdown/Dropdown"
+import Slideover from "components/Slideover/Slideover"
 import classnames from "classnames"
 
 const Gallery = () => {
   const [isButtonShown, setIsButtonShown] = useState({ key: -1, state: false })
+  const [isSideoverShown, setIsSideoverShown] = useState(false)
+  const [currentWojakId, setCurrentWojakId] = useState(0)
 
   return (
     <>
+      <Slideover
+        status={isSideoverShown}
+        changeStatus={setIsSideoverShown}
+        wojakId={currentWojakId}
+      />
       <div>
         <div className={styles.galleryContainer}>
           <div className={styles.headerContainer}>
@@ -43,6 +51,10 @@ const Gallery = () => {
                     <Lines />
                   </div>
                   <img
+                    onClick={() => {
+                      setIsSideoverShown(true)
+                      setCurrentWojakId(index)
+                    }}
                     className={styles.imageStyles}
                     src="https://cdn.discordapp.com/attachments/812822477683818527/825861306283589652/native-human.png"
                     alt=""

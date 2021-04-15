@@ -1,146 +1,60 @@
 @import "../../scss/variables";
 
-.imageStyles {
-  height: 15rem;
-  margin-left: auto;
-  margin-right: auto;
-  width: 15rem;
-
-  @media (min-width: 1280px) {
-    width: 14rem;
-    height: 14rem;
-  }
-}
-
-.dropdownButton {
-  background-color: $color_white;
-  border-collapse: collapse;
-  border-color: $color_black;
-  display: inline-flex;
-  justify-content: center;
-  font-weight: normal;
-  font-size: 20px;
-  line-height: 1.25rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 0.25rem;
-  color: $color_black;
-  text-transform: uppercase;
-  width: 169px;
-  border-width: 2px;
-
-  &:not(.countLabel):hover &:hover {
-    background-color: $color_grey_f9;
-  }
-}
-
-.galleryListItem {
-  background-color: $color_white;
-  border-color: $color_black;
-  border-width: 2px;
-  padding-top: 0.5rem;
-  text-align: center;
-}
-
-.imageTitle {
-  color: $color_black;
-}
-
-.galleryListItemContainer {
-  margin-top: 1.5rem;
-  margin-bottom: 0rem;
-
-  @media (min-width: 1280px) {
-    margin-top: 2.5rem;
-    margin-bottom: 0rem;
-  }
-}
-
-.counterContainer {
-  display: inline-block;
-  position: relative;
-  text-align: left;
-}
-
-.legendContainer {
-  margin-top: 0.5rem;
-  margin-bottom: 0rem;
-  align-items: center;
-}
-
-/// @todo Remove this class after icon decision.
-.delete1 {
-  opacity: 1;
-  transform: translateX(0) translateY(0) rotate(0) skewX(0) skewY(0) scaleX(1) scaleY(1);
-}
-
-/// @todo Remove this class after icon decision.
-.delete2 {
-  opacity: 0;
-  transform: translateX(0) translateY(0) rotate(0) skewX(0) skewY(0) scaleX(1) scaleY(1);
-}
-
-.countLabel {
-  width: 143px;
-}
-
-.linesContainer {
-  border-color: $color_black;
-  border-bottom-width: 2px;
-  padding-bottom: 0.5rem;
-}
-
-.pageTitle {
-  font-weight: normal;
-  font-size: 32px;
-  line-height: 2.25rem;
-  text-align: center;
-  color: $color_black;
-  text-transform: uppercase;
-  letter-spacing: -0.025em;
-
-  @media (min-width: 640px) {
-    font-size: 2.25rem;
-    line-height: 2.5rem;
-  }
-}
-
 .galleryContainer {
   margin-top: 3rem;
   margin-bottom: 0rem;
 }
 
-.viewButtonContainer {
-  width: 100%;
-  height: 48px;
-}
+.headerContainer {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 
-.viewButton {
-  border-color: $color_black;
-  border-top-width: 2px;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  width: 100%;
-  height: 48px;
-
-  &:hover {
-    background-color: $color_grey_e3;
+  .counterContainer {
+    display: inline-block;
+    position: relative;
+    text-align: left;
   }
-}
 
-.imageTitleContainer {
-  margin-top: 1.5rem;
-  margin-bottom: 0rem;
-  font-weight: 500;
-  font-size: 1.125rem;
-  line-height: 1.5rem;
-}
+  .dropdownButton {
+    background-color: $color_white;
+    border-collapse: collapse;
+    border-color: $color_black;
+    display: inline-flex;
+    justify-content: center;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 1.25rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0.25rem;
+    color: $color_black;
+    text-transform: uppercase;
+    width: 169px;
+    border-width: 2px;
 
-.arrowIcon {
-  height: 1.25rem;
-  width: 1rem;
-  margin-left: 0.5rem;
-  margin-right: 0.25rem;
+    &:not(.countLabel):hover &:hover {
+      background-color: $color_grey_f9;
+    }
+
+    .countLabel {
+      width: 143px;
+    }
+  }
+
+  .pageTitle {
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 2.25rem;
+    text-align: center;
+    color: $color_black;
+    text-transform: uppercase;
+    letter-spacing: -0.025em;
+
+    @media (min-width: 640px) {
+      font-size: 2.25rem;
+      line-height: 2.5rem;
+    }
+  }
 }
 
 .galleryList {
@@ -161,7 +75,74 @@
   }
 }
 
-.headerContainer {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+.galleryListItemContainer {
+  margin-top: 1.5rem;
+  margin-bottom: 0rem;
+
+  @media (min-width: 1280px) {
+    margin-top: 2.5rem;
+    margin-bottom: 0rem;
+  }
+}
+
+.galleryListItem {
+  background-color: $color_white;
+  border-color: $color_black;
+  border-width: 2px;
+  padding-top: 0.5rem;
+  text-align: center;
+}
+
+.linesContainer {
+  border-color: $color_black;
+  border-bottom-width: 2px;
+  padding-bottom: 0.5rem;
+}
+
+.imageStyles {
+  height: 15rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 15rem;
+
+  @media (min-width: 1280px) {
+    width: 14rem;
+    height: 14rem;
+  }
+}
+
+.legendContainer {
+  margin-top: 0.5rem;
+  margin-bottom: 0rem;
+  align-items: center;
+
+  .imageTitleContainer {
+    margin-top: 1.5rem;
+    margin-bottom: 0rem;
+    font-weight: 500;
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+  }
+
+  .imageTitle {
+    color: $color_black;
+  }
+
+  .viewButtonContainer {
+    width: 100%;
+    height: 48px;
+  }
+
+  .viewButton {
+    border-color: $color_black;
+    border-top-width: 2px;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    width: 100%;
+    height: 48px;
+
+    &:hover {
+      background-color: $color_grey_e3;
+    }
+  }
 }
