@@ -4,6 +4,7 @@
   border: 2px solid $color_black;
   transition: $transition_default;
   font-family: "Pixeboy", sans-serif;
+  font-weight: normal;
 
   &:hover {
     cursor: pointer;
@@ -29,6 +30,12 @@
   }
 
   &.mdSize {
+    padding: 5px 10px 3px;
+
+    .buttonContent {
+      font-size: 20px;
+      line-height: 20px;
+    }
   }
 
   &.lgSize {
@@ -52,6 +59,15 @@
     &:hover {
       color: $color_black;
       background: $color_white;
+    }
+  }
+
+  &.greyColor {
+    color: $color_black;
+    background: $color_grey_fa;
+
+    &:hover {
+      background-color: $color_grey_e3;
     }
   }
 }

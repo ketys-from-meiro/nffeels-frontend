@@ -2,7 +2,7 @@ import React, { ComponentProps, ReactNode } from "react"
 import classnames from "classnames"
 import styles from "./Button.module.scss"
 
-type ButtonColor = "primary" | "secondary"
+type ButtonColor = "primary" | "secondary" | "grey"
 type ButtonSize = "sm" | "md" | "lg"
 type ButtonProps = {
   children: ReactNode

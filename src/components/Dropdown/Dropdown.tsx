@@ -2,22 +2,35 @@ import React, { useState } from "react"
 
 import styles from "./Dropdown.module.scss"
 import classnames from "classnames"
+import Button from "components/Button/Button"
 
-const Dropdown = () => {
+type DropdownProps = {
+  onChange: (option: string) => void
+  value: string
+  options: string[]
+}
+
+const Dropdown = ({ onChange, value, options }: DropdownProps) => {
   const [isFilterOpen, setIsFilterOpen] = useState(false)
+
+  const selectOption = (option: string) => () => {
+    onChange(option)
+    setIsFilterOpen(false)
+  }
 
   return (
     <div className={styles.filterDropdownContainer} onMouseLeave={() => setIsFilterOpen(false)}>
       <div>
-        <button
+        <Button
           type="button"
           onClick={() => {
             setIsFilterOpen(!isFilterOpen)
           }}
-          className={styles.dropdownButton}
           id="options-menu"
           aria-expanded="true"
           aria-haspopup="true"
+          size="md"
+          className={styles.dropdownButton}
         >
           Filter by trait
           <svg
@@ -33,7 +46,7 @@ const Dropdown = () => {
               clipRule="evenodd"
             />
           </svg>
-        </button>
+        </Button>
       </div>
       <div
         className={classnames(
@@ -46,9 +59,16 @@ const Dropdown = () => {
         aria-labelledby="filter-menu"
       >
         <div className={styles.dropdownContent} role="none">
-          <button className={styles.dropdownContentItem} role="menuitem">
-            Trait 1
-          </button>
+          {options.map(option => (
+            <button
+              key={option}
+              className={styles.dropdownContentItem}
+              role="menuitem"
+              onClick={selectOption(option)}
+            >
+              {option}
+            </button>
+          ))}
         </div>
       </div>
     </div>
