@@ -1,0 +1,95 @@
+@import "../../scss/variables";
+
+.dropdownContentItem {
+  display: block;
+  font-size: 20px;
+  text-align: left;
+  line-height: 1.25rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.5rem;
+  padding-right: 1rem;
+  color: $color_grey_37;
+  text-transform: uppercase;
+  width: 100%;
+
+  &:hover {
+    background-color: $color_grey_f3;
+    color: $color_black_11;
+  }
+}
+
+.filterDropdownContainer {
+  display: inline-block;
+  padding-right: 0.5rem;
+  padding-bottom: 0.5rem;
+  position: relative;
+  text-align: left;
+}
+
+.dropdownButton {
+  background-color: $color_white;
+  border-collapse: collapse;
+  border-color: $color_black;
+  display: inline-flex;
+  justify-content: center;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 1.25rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.25rem;
+  color: $color_black;
+  text-transform: uppercase;
+  width: 169px;
+  border-width: 2px;
+
+  &:not(.countLabel):hover &:hover {
+    background-color: $color_grey_f9;
+  }
+}
+
+.dropdownContentContainer {
+  background-color: $color_white;
+  border-color: $color_black;
+  border-right-width: 2px;
+  border-bottom-width: 2px;
+  border-left-width: 2px;
+  position: absolute;
+  left: 0rem;
+  width: 169px;
+  z-index: 10;
+  transform-origin: top;
+}
+
+.dropdownOpen {
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow,
+    transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  opacity: 1;
+}
+
+.dropdownClose {
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow,
+    transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  opacity: 0;
+}
+
+.transform {
+  transform: translateX(0) translateY(0) rotate(0) skewX(0) skewY(0) scaleX(1) scaleY(1);
+}
+
+.dropdownContent {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.arrowIcon {
+  height: 1.25rem;
+  width: 1rem;
+  margin-left: 0.5rem;
+  margin-right: 0.25rem;
+}

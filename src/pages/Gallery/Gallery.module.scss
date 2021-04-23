@@ -1,0 +1,148 @@
+@import "../../scss/variables";
+
+.galleryContainer {
+  margin-top: 3rem;
+  margin-bottom: 0rem;
+}
+
+.headerContainer {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  .counterContainer {
+    display: inline-block;
+    position: relative;
+    text-align: left;
+  }
+
+  .dropdownButton {
+    background-color: $color_white;
+    border-collapse: collapse;
+    border-color: $color_black;
+    display: inline-flex;
+    justify-content: center;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 1.25rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0.25rem;
+    color: $color_black;
+    text-transform: uppercase;
+    width: 169px;
+    border-width: 2px;
+
+    &:not(.countLabel):hover &:hover {
+      background-color: $color_grey_f9;
+    }
+
+    .countLabel {
+      width: 143px;
+    }
+  }
+
+  .pageTitle {
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 2.25rem;
+    text-align: center;
+    color: $color_black;
+    text-transform: uppercase;
+    letter-spacing: -0.025em;
+
+    @media (min-width: 640px) {
+      font-size: 2.25rem;
+      line-height: 2.5rem;
+    }
+  }
+}
+
+.galleryList {
+  margin-top: 1rem;
+  margin-bottom: 0rem;
+
+  @media (min-width: 640px) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+  }
+}
+
+.galleryListItemContainer {
+  margin-top: 1.5rem;
+  margin-bottom: 0rem;
+
+  @media (min-width: 1280px) {
+    margin-top: 2.5rem;
+    margin-bottom: 0rem;
+  }
+}
+
+.galleryListItem {
+  background-color: $color_white;
+  border-color: $color_black;
+  border-width: 2px;
+  padding-top: 0.5rem;
+  text-align: center;
+}
+
+.linesContainer {
+  border-color: $color_black;
+  border-bottom-width: 2px;
+  padding-bottom: 0.5rem;
+}
+
+.imageStyles {
+  height: 15rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 15rem;
+
+  @media (min-width: 1280px) {
+    width: 14rem;
+    height: 14rem;
+  }
+}
+
+.legendContainer {
+  margin-top: 0.5rem;
+  margin-bottom: 0rem;
+  align-items: center;
+
+  .imageTitleContainer {
+    margin-top: 1.5rem;
+    margin-bottom: 0rem;
+    font-weight: 500;
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+  }
+
+  .imageTitle {
+    color: $color_black;
+  }
+
+  .viewButtonContainer {
+    width: 100%;
+    height: 48px;
+  }
+
+  .viewButton {
+    border-color: $color_black;
+    border-top-width: 2px;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    width: 100%;
+    height: 48px;
+
+    &:hover {
+      background-color: $color_grey_e3;
+    }
+  }
+}
