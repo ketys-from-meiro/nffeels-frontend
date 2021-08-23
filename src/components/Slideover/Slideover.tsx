@@ -24,8 +24,12 @@ export default function Slideover(props: { status: boolean; changeStatus: any; w
     <>
       {status ? (
         <section className={styles.slideoverSection} role="dialog" aria-modal="true">
-          <div className={styles.bgOverlayContainer} onClick={() => changeStatus(false)}>
-            <div className={styles.bgOverlay} aria-hidden="true" />
+          <div className={styles.bgOverlayContainer}>
+            <div
+              className={styles.bgOverlay}
+              aria-hidden="true"
+              onClick={() => changeStatus(false)}
+            />
             <div className={styles.slideoverContainer}>
               <div className={styles.slideover}>
                 <div className={styles.slideoverPanel}>
