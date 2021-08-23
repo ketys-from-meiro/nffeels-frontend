@@ -1,19 +1,21 @@
 import React, { useState } from "react"
-
 import styles from "./Gallery.module.scss"
 import Lines from "components/Lines/Lines"
 import Dropdown from "components/Dropdown/Dropdown"
 import Slideover from "components/Slideover/Slideover"
 import Button from "components/Button/Button"
+import { useEthers } from "@usedapp/core"
 
 const DROPDOWN_OPTIONS = ["Trait 1", "Trait 2"]
 
 const Gallery = () => {
+  const { library } = useEthers()
   const [isButtonShown, setIsButtonShown] = useState({ key: -1, state: false })
   const [isSideoverShown, setIsSideoverShown] = useState(false)
   const [currentWojakId, setCurrentWojakId] = useState(0)
   const [filterOption, setFilterOption] = useState("")
 
+  console.log(library)
   return (
     <>
       <Slideover
