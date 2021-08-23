@@ -1,14 +1,35 @@
+import { useCallback, useEffect } from "react"
 import styles from "./Slideover.module.scss"
 
 export default function Slideover(props: { status: boolean; changeStatus: any; wojakId: number }) {
   const { status, changeStatus, wojakId } = props
+
+  const escListener = useCallback(
+    e => {
+      if (e.key === "Escape") {
+        changeStatus(false)
+      }
+    },
+    [changeStatus],
+  )
+
+  useEffect(() => {
+    window.addEventListener("keyup", escListener)
+    return () => {
+      window.removeEventListener("keyup", escListener)
+    }
+  }, [escListener])
 
   return (
     <>
       {status ? (
         <section className={styles.slideoverSection} role="dialog" aria-modal="true">
           <div className={styles.bgOverlayContainer}>
-            <div className={styles.bgOverlay} aria-hidden="true" />
+            <div
+              className={styles.bgOverlay}
+              aria-hidden="true"
+              onClick={() => changeStatus(false)}
+            />
             <div className={styles.slideoverContainer}>
               <div className={styles.slideover}>
                 <div className={styles.slideoverPanel}>
