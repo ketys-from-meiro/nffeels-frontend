@@ -16,7 +16,7 @@ const LoginModal = ({ toggle }: LoginModalProps) => {
 
   const onConnectClick = (type: "injected" | "walletconnect") => async () => {
     const walletconnectConnector = new WalletConnectConnector({
-      rpc: { 1: "https://mainnet.eth.aragon.network/" },
+      rpc: { 31337: "http://127.0.0.1:8545/" },
     })
 
     switch (type) {
