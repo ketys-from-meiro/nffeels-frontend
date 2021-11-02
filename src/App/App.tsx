@@ -10,6 +10,7 @@ import LoginModalContext from "./components/LoginModal/context"
 import LoginModal from "./components/LoginModal/LoginModal"
 import Council from "pages/Council/Council"
 import Layout from "./components/Layout/Layout"
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute"
 
 /*
 const config = {
@@ -43,7 +44,7 @@ const App = () => {
           <Header />
           <Layout>
             <Switch>
-              <Route path={getRoutePath("gallery")} component={Gallery} />
+              <ProtectedRoute path={getRoutePath("gallery")} component={Gallery} />
               <Route path={getRoutePath("council")} component={Council} />
               <Route path={getRoutePath("home")} component={Home} exact />
             </Switch>
