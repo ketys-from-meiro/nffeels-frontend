@@ -22,15 +22,15 @@ const config = {
 */
 
 const config = {
-  readOnlyChainId: 31337,
+  readOnlyChainId: ChainId.Hardhat,
   readOnlyUrls: {
-    31337: "http://127.0.0.1:8545/",
+    [ChainId.Hardhat]: "http://127.0.0.1:8545/",
   },
   multicallAddresses: {
-    31337: "http://localhost:3000/",
+    [ChainId.Hardhat]: "http://localhost:8545",
     ...MULTICALL_ADDRESSES,
   },
-  supportedChains: [ChainId.Mainnet, ChainId.Localhost, ChainId.Hardhat],
+  supportedChains: [ChainId.Hardhat],
 }
 
 const App = () => {

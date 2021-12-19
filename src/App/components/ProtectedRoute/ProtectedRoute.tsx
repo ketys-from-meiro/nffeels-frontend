@@ -18,8 +18,8 @@ const LoginContent = () => {
 }
 
 export default function ProtectedRoute({ ...routeProps }: RouteProps) {
-  const { account } = useEthers()
-  if (!account) {
+  const { account, library } = useEthers()
+  if (!account || !library) {
     return <Route {...routeProps} component={LoginContent} />
   }
   return <Route {...routeProps} />
