@@ -25,20 +25,19 @@ const Gallery = () => {
 
   const getUserTokens = useCallback(async () => {
     if (erc721Contract && library && wojakEventsContract) {
-      const balanceRes = await erc721Contract.balanceOf(account)
-      const balance = balanceRes.toNumber()
-      if (balance > 0) {
+      const balance = await erc721Contract.balanceOf(account)
+      if (balance.toNumber() > 0) {
         const logs = await library.getLogs({
           address: CONTRACT,
         })
-        const decodedEvents = logs.map(log => {
-          wojakEventsContract.interface.decodeEventLog("Wojak", log.data)
-        })
-        console.log(decodedEvents)
         console.log(logs)
+        const decodedEvents = logs.map(log =>
+          wojakEventsContract.interface.decodeEventLog("Wojak", log.data),
+        )
+        console.log(decodedEvents)
       }
     }
-  }, [account, erc721Contract, wojakEventsContract])
+  }, [account, erc721Contract, wojakEventsContract, library])
 
   const redeem = async () => {
     const tokenURI = "56660740342816081431743222872731117427526580551422435935884080137676694505177"
