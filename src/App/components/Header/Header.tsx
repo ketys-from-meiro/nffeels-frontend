@@ -3,7 +3,7 @@ import React, { useContext } from "react"
 import { useEthers, shortenIfAddress } from "@usedapp/core"
 import styles from "./Header.module.scss"
 import LoginModalContext from "App/components/LoginModal/context"
-import { NavLink } from "react-router-dom"
+import { NavLink, useHistory } from "react-router-dom"
 import { getRoutePath } from "services/routes"
 import wojakImg from "images/wojak-landing.png"
 
@@ -18,11 +18,13 @@ const Lines = () => {
 }
 
 const Header = () => {
+  const history = useHistory()
   const { deactivate, account } = useEthers()
   const { toggle } = useContext(LoginModalContext)
 
   const onLogoutClick = () => {
     deactivate()
+    history.push(getRoutePath("home"))
   }
 
   return (
@@ -33,7 +35,7 @@ const Header = () => {
           Home
         </NavLink>
         <NavLink to={getRoutePath("gallery")}>Gallery</NavLink>
-        <NavLink to={getRoutePath("council")}>Council</NavLink>
+        {/*<NavLink to={getRoutePath("council")}>Council</NavLink>*/}
       </nav>
       <Lines />
       <div className={styles.brand}>

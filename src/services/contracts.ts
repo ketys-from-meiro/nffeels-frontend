@@ -11,7 +11,7 @@ const ABI = {
   Drop: DropFacet.abi,
 }
 
-export const CONTRACT = "0x6EBA841F1201fFDDe7DDC2ba995D3308f6C4aEa0"
+const CONTRACT = "0x6EBA841F1201fFDDe7DDC2ba995D3308f6C4aEa0"
 
 export const getContract = function (facet: keyof typeof ABI, provider: Web3Provider) {
   const wethInterface = new utils.Interface(ABI[facet])
